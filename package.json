@@ -1,0 +1,13 @@
+{
+  "name": "uplink-academy",
+  "version": "1.0.0",
+  "description": "Gamified trainingsplatform voor netwerkbeheer in de telecomsector",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --no-warnings server.js",
+    "seed": "node --no-warnings src/seed.js --reset"
+  },
+  "engines": { "node": ">=22.13" },
+  "license": "UNLICENSED",
+  "private": true
+}
