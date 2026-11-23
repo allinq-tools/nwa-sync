@@ -731,7 +731,7 @@ const STEP_TYPES = {
   match: { label: 'Combineren (koppelen)', help: 'Maak paren. De speler koppelt elk item links aan het juiste item rechts (rechts wordt geschud).' },
 };
 const ICON_CHOICES = ['network', 'layers', 'switch', 'router', 'globe', 'route', 'antenna', 'fiber', 'monitor', 'server', 'shield', 'bolt'];
-const CATEGORIES = ['IP-adressering', 'Netwerkfundamenten', 'Switching', 'Routing', 'Transport', 'Mobiele netwerken', 'Toegangsnetwerk', 'Netwerkbeheer', 'Netwerkdiensten', 'Security'];
+const CATEGORIES = ['Allinq Bedrijf & Organisatie', 'IP-adressering', 'Netwerkfundamenten', 'Switching', 'Routing', 'Transport', 'Mobiele netwerken', 'Toegangsnetwerk', 'Netwerkbeheer', 'Netwerkdiensten', 'Security'];
 
 function defaultData(type) {
   return {
