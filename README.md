@@ -1,4 +1,4 @@
-# Uplink Academy
+# TLC
 
 Gamified trainingsplatform voor netwerkbeheer in de telecomsector: wekelijkse uitdagingen, XP, levels, streaks, een leaderboard en beloningen, plus een **challenge-builder** waarmee beheerders zelf uitdagingen maken.
 

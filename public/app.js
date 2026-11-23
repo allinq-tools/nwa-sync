@@ -1,5 +1,5 @@
 'use strict';
-/* Uplink Academy – frontend (vanilla JS, hash-routing) */
+/* TLC – frontend (vanilla JS, hash-routing) */
 
 // ---------- Helpers ----------
 const $ = (s, el = document) => el.querySelector(s);
@@ -80,7 +80,7 @@ function shell(active, content) {
   const item = (key, href, ic, label) => `<a class="nav-item ${active === key ? 'active' : ''}" href="${href}" aria-label="${label}">${icon(ic, 22)}<span class="tip">${label}</span></a>`;
   return `<div class="shell">
     <nav class="sidebar">
-      <a class="brand" href="#/" aria-label="Uplink Academy"><img src="/favicon.svg" width="40" height="40" alt=""></a>
+      <a class="brand" href="#/" aria-label="TLC"><img src="/favicon.svg" width="40" height="40" alt=""></a>
       ${item('challenges', '#/', 'target', 'Uitdagingen')}
       ${item('leaderboard', '#/leaderboard', 'crown', 'Leaderboard')}
       ${item('achievements', '#/beloningen', 'trophy', 'Beloningen')}
@@ -173,7 +173,7 @@ async function refreshMe() {
 function renderLogin() {
   app.innerHTML = `<div class="login">
     <section class="login-art">
-      <div class="logo"><img src="/favicon.svg" width="40" height="40" alt=""> Uplink Academy</div>
+      <div class="logo"><img src="/favicon.svg" width="40" height="40" alt=""> TLC</div>
       <div>
         <h1>Houd je netwerkkennis <em>in de lucht</em>.</h1>
         <p>Wekelijkse uitdagingen over routing, switching, transport, mobiele netwerken en NOC-beheer. Verdien XP, bouw je streak op en klim op het leaderboard.</p>
