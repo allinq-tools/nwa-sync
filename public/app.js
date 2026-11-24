@@ -253,6 +253,7 @@ async function viewChallenges() {
         <div class="streak-big"><b>${me.streak}</b><small>${me.streak === 1 ? 'week' : 'weken'} streak</small></div>
       </section>
     </div>
+    <section class="panel weather" id="weather" aria-live="polite"><div class="small muted">Weersvoorspelling laden…</div></section>
 
     <div class="story-head">
       <h2>Jouw verhaallijn</h2>
@@ -276,8 +277,36 @@ async function viewChallenges() {
     <div id="cards"></div>
   `);
   renderCards();
+  loadWeather();
   const node = $('.node.selected');
   if (node) node.scrollIntoView({ block: 'nearest', inline: 'center' });
+}
+
+async function loadWeather() {
+  const el = $('#weather');
+  if (!el) return;
+  let w;
+  try { w = await api('GET', '/api/weather'); } catch { w = { days: [], unavailable: true }; }
+  if (!document.body.contains(el)) return;
+  if (!w.days?.length) {
+    el.innerHTML = `<div class="small muted">De weersvoorspelling is nu niet beschikbaar.</div>`;
+    return;
+  }
+  const dayName = (iso, i) => i === 0 ? 'Vandaag' : i === 1 ? 'Morgen'
+    : new Date(iso + 'T12:00:00').toLocaleDateString('nl-NL', { weekday: 'long' });
+  el.innerHTML = `
+    <div class="weather-head"><h3>Weer in ${esc(w.place)}</h3>
+      <span class="small muted">Komende ${w.days.length} dagen${w.stale ? ' · mogelijk verouderd' : ''}</span></div>
+    <div class="weather-days">${w.days.map((d, i) => `
+      <div class="wday" title="${esc(d.label)}">
+        <div class="wday-name">${esc(dayName(d.date, i))}</div>
+        <div class="wday-icon" aria-hidden="true">${d.emoji}</div>
+        <div class="wday-label small">${esc(d.label)}</div>
+        <div class="wday-temp"><b>${d.max}°</b> <span class="muted">${d.min}°</span></div>
+        <div class="wday-meta small muted"><span class="nw">💧 ${d.rainChance != null ? d.rainChance + '%' : fmt(d.rain) + '&nbsp;mm'}</span> · <span class="nw">💨 ${d.wind}&nbsp;km/u</span></div>
+      </div>`).join('')}
+    </div>
+    <div class="small muted weather-src">Bron: Open-Meteo</div>`;
 }
 
 function storyNode(c) {

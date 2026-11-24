@@ -2,6 +2,7 @@
 const crypto = require('node:crypto');
 const { db, hashPassword, verifyPassword, tx } = require('./db');
 const G = require('./game');
+const { getForecast } = require('./weather');
 
 const SESSION_DAYS = 14;
 
@@ -138,6 +139,9 @@ route('POST', '/api/login', ({ body, res }) => {
   res.setHeader('Set-Cookie', `sid=${token}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${SESSION_DAYS * 86400}`);
   return { ok: true };
 }, { auth: false });
+
+// Weersvoorspelling (Open-Meteo, met cache)
+route('GET', '/api/weather', () => getForecast());
 
 route('POST', '/api/logout', ({ req, res }) => {
   const token = parseCookies(req.headers.cookie).sid;

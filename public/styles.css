@@ -114,7 +114,18 @@ textarea.input { resize: vertical; min-height: 70px; }
 .pill.coral { background: var(--coral-soft); color: #c2401f; }
 
 /* ---------- Dashboard ---------- */
-.top-cards { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 24px; margin-bottom: 44px; }
+.top-cards { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 24px; margin-bottom: 24px; }
+.weather { margin-bottom: 44px; padding: 22px 28px; }
+.weather-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.weather-days { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+.wday { background: var(--card); border-radius: 14px; padding: 14px; text-align: center; }
+.wday-name { font-weight: 600; text-transform: capitalize; }
+.wday-icon { font-size: 34px; line-height: 1.2; margin: 4px 0; }
+.wday-label { color: var(--muted); min-height: 1.5em; }
+.wday-temp { font: 600 18px var(--font-head); margin-top: 4px; }
+.wday-meta { margin-top: 2px; }
+.wday-meta .nw { white-space: nowrap; }
+.weather-src { margin-top: 10px; text-align: right; font-size: 11px; }
 .profile { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
 .profile-head { display: flex; align-items: center; gap: 18px; }
 .level-medal {

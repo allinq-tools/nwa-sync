@@ -26,6 +26,7 @@ Opnieuw beginnen met verse voorbeelddata: `npm run seed`. Een andere poort kies 
 
 - **Uitdagingen**: profielkaart (level, XP, seizoens-XP, reputatie), een streak van 10 weken, een verhaallijn met de status van elke uitdaging (voltooid, open, gemist of vergrendeld) en per week een reguliere uitdaging en een bonusuitdaging.
 - **Speler**: stappen met voortgangsbolletjes, directe feedback met uitleg en een XP-teller. Je kunt een uitdaging herstarten; alleen je beste poging telt mee.
+- **Weersvoorspelling**: op de startpagina het weer voor de komende 5 dagen (temperatuur, kans op neerslag, wind), via [Open-Meteo](https://open-meteo.com) (gratis, geen API-sleutel). De server bewaart het resultaat 30 minuten. Standaardlocatie is Utrecht; een andere kies je met `WEATHER_PLACE`, `WEATHER_LAT` en `WEATHER_LON`, bijvoorbeeld `WEATHER_PLACE=Houten WEATHER_LAT=52.03 WEATHER_LON=5.17 npm start`. Zonder internet toont het blok een korte melding en werkt de rest gewoon.
 - **Leaderboard**: ranglijsten voor de organisatie, groepen tegen elkaar en je eigen groep, te sorteren op seizoens-XP, totaal-XP en streak.
 - **Beloningen**: automatisch ontgrendeld, met de datum waarop je ze haalde.
 - **Beheer**:
@@ -66,6 +67,7 @@ server.js        HTTP-server (API + statische bestanden)
 src/db.js        SQLite-schema, wachtwoord-hashing (scrypt)
 src/game.js      Vraagcontrole, scoring, levels, streaks, beloningen
 src/api.js       REST-API (auth, spelen, leaderboard, beheer)
+src/weather.js   Weersvoorspelling (Open-Meteo, met cache)
 src/seed.js      Voorbeeldcontent (9 uitdagingen + 2 bonus) en demodata
 public/          Frontend (vanilla JS, geen build-stap)
 ```
